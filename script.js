@@ -1,8 +1,3 @@
-var upppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
-var numberChars = "0123456789";
-var specialChars = "!@#$%^&*()<>;:?[]{}_-"
-
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
@@ -16,4 +11,27 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  generateBtn.addEventListener("click", writePassword);
+
+  function generatePassword() {
+    var length = parseInt(lengthInput.value);
+    var includeUppercase = uppercaseInput.checked;
+    var includeLowercase = lowercaseInput.checked;
+    var inlcudeNumbers = numbersInput.checked;
+    var includeSpecial = specialInput.checked;
+
+    var upppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
+    var numberChars = "0123456789";
+    var specialChars = "!@#$%^&*()<>;:?[]{}_-";
+
+    let allChars = "";
+    if (includeUppercase) allChars += upppercaseChars;
+    if (includeLowercase) allChars += lowercaseChars;
+    if (inlcudeNumbers) allChars += numberChars;
+    if (includeSpecial) allChars += specialChars;
+  }
+});
