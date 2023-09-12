@@ -2,7 +2,7 @@
 
 ## Description
 
-This Password Generator was created to generate random, more complex, and secure passwords. For employees who access sensitve data, this is Generator is especially valuable, making passwords much more difficut to guess for cyber criminals lurking to steal precious information.
+This Password Generator was created to generate random, more complex, and secure passwords. For employees who access sensitve data, this Generator is especially valuable, making passwords much more difficut to guess for cyber criminals lurking to steal precious information.
 
 ## Installation
 
