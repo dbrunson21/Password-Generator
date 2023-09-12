@@ -1,43 +1,55 @@
 
 var generateBtn = document.querySelector("#generate");
 //add event listener to genrerate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
 
-function writePassword() {
-
+function generatePassword() {
   //prompt the user for password legth
-  //retrive user inputs
-  var lengthInput = document.querySelector("#length");
-  var uppercaseInput = document.querySelector("#uppercase");
-  var lowercaseInput = document.querySelector("#lowercase");
-  var numbersInput = document.querySelector("#numbers");
-  var specialInput = document.querySelector("#special");
-  var passwordOutput = document.querySelector("#password");
+  var length = parseInt(prompt("Enter the length of the password (between 8 and 128 characters. "));
 
   //validate the length input
-  var length = parseInt(lengthInput);
-  if (isNaN(length) || length < 6 || length > 128) {
-    alert("Please enter a valid password length between 6 and 128 characters. ");
-    return;
+
+  if (isNaN(length) || length < 8 || length > 128) {
+    alert("Please enter a valid password length between 8 and 128 characters. ");
+    return generatePassword();
   }
+
+  //Prompt for character types to include
+  var includeUppercase = confirm("Include uppercase letters?");
+  var includeLowercase = confirm("Include lowercase letters?");
+  var includeNumbers = confirm("Include numbers?");
+  var includeSpecial = confirm("Include special characters?");
+
+  //validate that at least one character type is selected
+  if (!includeUppercase && !includeLowercase && !includeNumbers && !includeSpecial) {
+    alert("Please select at least one character type.");
+    return generatePassword();
+  }
+
+  //generate password based on selected criteria
+  var password = generateRandomPassword(length, includeUppercase, includeLowercase, includeNumbers, includeSpecial);
+
+  //display the generated password
+  var passwordText = document.querySelector('#password');
+
+  passwordText.value = password;
+}
+
+
+
+function generateRandomPassword(length, includeUppercase, includeLowercase, includeNumbers, includeSpecial) {
 
   //character sets
   var uppercaseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   var lowercaseChars = "abcdefghijklmnopqrstuvwxyz";
   var numberChars = "0123456789";
   var specialChars = "!@#$%^&*()<>;:?[]{}_-";
-
   var allChars = "";
-  if (uppercaseInput.checked) allChars += uppercaseChars;
-  if (lowercaseInput.checked) allChars += lowercaseChars;
-  if (numbersInput.checked) allChars += numberChars;
-  if (specialInput.checked) allChars += specialChars;
 
-  //if character requirements aren't met
-  if (allChars === "") {
-    alert("Please select at least one character set. ")
-    return;
-  }
+  if (includeUppercase) allChars += uppercaseChars;
+  if (includeLowercase) allChars += lowercaseChars;
+  if (includeNumbers) allChars += numberChars;
+  if (includeSpecial) allChars += specialChars;
 
   var password = "";
   for (let i = 0; i < length; i++) {
@@ -45,6 +57,13 @@ function writePassword() {
     password += allChars.charAt(randomIndex)
   }
 
-  //display the gernerated password
-  passwordOutput.value = password;
-}  
+  return password;
+}
+
+//retrive user inputs
+var lengthInput = document.querySelector("#length");
+var uppercaseInput = document.querySelector("#uppercase");
+var lowercaseInput = document.querySelector("#lowercase");
+var numbersInput = document.querySelector("#numbers");
+var specialInput = document.querySelector("#special");
+var passwordOutput = document.querySelector("#password");
