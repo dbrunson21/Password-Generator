@@ -5,7 +5,7 @@ generateBtn.addEventListener("click", generatePassword);
 
 function generatePassword() {
   //prompt the user for password legth
-  var length = parseInt(prompt("Enter the length of the password (between 8 and 128 characters. "));
+  var length = parseInt(prompt("Enter the length of the password (between 8 and 128 characters)"));
 
   //validate the length input
 
