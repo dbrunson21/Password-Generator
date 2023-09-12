@@ -4,6 +4,8 @@ var generateBtn = document.querySelector("#generate");
 generateBtn.addEventListener("click", writePassword);
 
 function writePassword() {
+
+  //prompt the user for password legth
   //retrive user inputs
   var lengthInput = document.querySelector("#length");
   var uppercaseInput = document.querySelector("#uppercase");
@@ -13,7 +15,7 @@ function writePassword() {
   var passwordOutput = document.querySelector("#password");
 
   //validate the length input
-  var length = parseInt(lengthInput.value);
+  var length = parseInt(lengthInput);
   if (isNaN(length) || length < 6 || length > 128) {
     alert("Please enter a valid password length between 6 and 128 characters. ");
     return;
