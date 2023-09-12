@@ -24,3 +24,8 @@ N/A
 ## License
 
 Please refer to the LICENSE in the repo.
+
+### links
+
+site: https://dbrunson21.github.io/Password-Generator/
+Github: git@github.com:dbrunson21/Password-Generator.git
